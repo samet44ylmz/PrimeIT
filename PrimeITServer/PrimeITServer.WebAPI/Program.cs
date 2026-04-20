@@ -12,6 +12,7 @@ using Microsoft.OpenApi.Models;
 using PrimeITServer.Application;
 using PrimeITServer.Infrastructure;
 using PrimeITServer.WebAPI.Middlewares;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using Microsoft.EntityFrameworkCore;
@@ -85,12 +86,12 @@ builder.Services.AddSwaggerGen(setup =>
 
 builder.Services.AddRateLimiter(options =>
 {
-    options.AddRedisFixedWindowLimiter("fixed", options =>
+    options.AddRedisFixedWindowLimiter("fixed", opt =>
     {
-        options.ConnectionMultiplexerFactory = () => StackExchange.Redis.ConnectionMultiplexer.Connect(builder.Configuration.GetConnectionString("Redis") ?? "localhost:6379");
-        options.Window = TimeSpan.FromSeconds(1);
-        options.PermitLimit = 100;
-        options.QueueLimit = 100;
+        opt.ConnectionMultiplexerFactory = () => StackExchange.Redis.ConnectionMultiplexer.Connect(builder.Configuration.GetConnectionString("Redis") ?? "localhost:6379");
+        opt.Window = TimeSpan.FromSeconds(1);
+        opt.PermitLimit = 100;
+        opt.QueueLimit = 100;
     });
 });
 
