@@ -102,6 +102,7 @@ services:
       - Elasticsearch__Url=http://elasticsearch:9200
       - Jwt__SecretKey=${JWT_SECRET_KEY:-}
       - Serilog__SeqServerUrl=http://seq:80
+      - ASPNETCORE_URLS=http://+:8080
     restart: unless-stopped
     networks:
       - primeit_network
