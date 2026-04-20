@@ -14,6 +14,7 @@ using PrimeITServer.WebAPI.Middlewares;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Bson;
+using Microsoft.EntityFrameworkCore;
 
 // Register Guid Serializer for MongoDB
 BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
@@ -109,6 +110,23 @@ app.UseRateLimiter();
 app.UseExceptionHandler();
 
 app.MapControllers().RequireRateLimiting("fixed").RequireAuthorization();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<PrimeITServer.Infrastructure.Context.ApplicationDbContext>();
+        if (Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.Any(context.Database.GetPendingMigrations()))
+        {
+            context.Database.Migrate();
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("Migration sırasında hata oluştu: " + ex.Message);
+    }
+}
 
 await ExtensionsMiddleware.CreateFirstUser(app);
 PrimeITServer.Infrastructure.Context.MongoSeedData.Initialize(app).Wait();
