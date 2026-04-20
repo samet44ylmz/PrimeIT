@@ -184,5 +184,5 @@ C:\PrimeIT\PrimeITServer\PrimeITServer.WebAPI\obj\Debug\net8.0\PrimeITServer.Web
 C:\PrimeIT\PrimeITServer\PrimeITServer.WebAPI\obj\Debug\net8.0\PrimeITServer.WebAPI.genruntimeconfig.cache
 C:\PrimeIT\PrimeITServer\PrimeITServer.WebAPI\obj\Debug\net8.0\ref\PrimeITServer.WebAPI.dll
 C:\PrimeIT\PrimeITServer\PrimeITServer.WebAPI\bin\Debug\net8.0\PrimeITServer.WebAPI.staticwebassets.runtime.json
-C:\PrimeIT\PrimeITServer\PrimeITServer.WebAPI\obj\Debug\net8.0\PrimeITServer.WebAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\PrimeIT\PrimeITServer\PrimeITServer.WebAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\PrimeIT\PrimeITServer\PrimeITServer.WebAPI\obj\Debug\net8.0\PrimeITServer.WebAPI.sourcelink.json

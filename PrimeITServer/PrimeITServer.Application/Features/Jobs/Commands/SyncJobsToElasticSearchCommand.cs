@@ -2,6 +2,7 @@ using MediatR;
 using PrimeITServer.Application.Services;
 using PrimeITServer.Domain.Repositories;
 using GenericRepository;
+using Microsoft.EntityFrameworkCore;
 using TS.Result;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ public sealed class SyncJobsToElasticSearchCommandHandler : IRequestHandler<Sync
     public async Task<Result<string>> Handle(SyncJobsToElasticSearchCommand request, CancellationToken cancellationToken)
     {
         // Fetch only active jobs to keep the index clean
-        var jobs = await _jobRepository.GetAllByExpressionAsync(x => x.IsActive, cancellationToken);
+        var jobs = await _jobRepository.Where(x => x.IsActive).ToListAsync(cancellationToken);
         
         await _elasticSearchService.SyncAllJobsAsync(jobs, cancellationToken);
 

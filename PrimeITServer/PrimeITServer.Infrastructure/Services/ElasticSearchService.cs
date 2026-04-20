@@ -26,14 +26,25 @@ public sealed class ElasticSearchService : IElasticSearchService
     {
         var response = await _elasticClient.SearchAsync<PrimeITServer.Domain.Entities.Job>(s => s
             .Query(q => q
-                .MultiMatch(m => m
-                    .Fields(f => f
-                        .Field(job => job.Title, boost: 2.0)
-                        .Field(job => job.Description)
-                        .Field(job => job.Location)
-                        .Field(job => job.Company))
-                    .Query(query)
-                    .Fuzziness(Fuzziness.Auto)
+                .Bool(b => b
+                    .Should(
+                        sh => sh.MultiMatch(mm => mm
+                            .Fields(f => f
+                                .Field(job => job.Title, boost: 3.0)
+                                .Field(job => job.Description)
+                                .Field(job => job.Location)
+                                .Field(job => job.Company))
+                            .Query(query)
+                            .Fuzziness(Fuzziness.EditDistance(2)) // 2 harf hatasına kadar tam tolerans
+                            .PrefixLength(0) // Kelimenin en başındaki hataya bile izin ver
+                            .MaxExpansions(100)
+                            .Operator(Operator.Or) 
+                        ),
+                        sh => sh.QueryString(qs => qs
+                            .Query($"*{query}*") // Kelime içinde geçme desteği
+                            .Boost(0.5)
+                        )
+                    )
                 )
             ), cancellationToken
         );
@@ -75,7 +86,7 @@ public sealed class ElasticSearchService : IElasticSearchService
                     )
                 )
             )
-            .Map<Job>(m => m
+            .Map<PrimeITServer.Domain.Entities.Job>(m => m
                 .AutoMap()
                 .Properties(p => p
                     .Text(t => t.Name(n => n.Title).Analyzer("turkish_analyzer").Boost(2.0))
@@ -86,7 +97,7 @@ public sealed class ElasticSearchService : IElasticSearchService
             ), cancellationToken);
     }
 
-    public async Task SyncAllJobsAsync(IEnumerable<Job> jobs, CancellationToken cancellationToken = default)
+    public async Task SyncAllJobsAsync(IEnumerable<PrimeITServer.Domain.Entities.Job> jobs, CancellationToken cancellationToken = default)
     {
         await CreateIndexWithMappingAsync(cancellationToken);
 

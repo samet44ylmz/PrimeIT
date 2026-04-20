@@ -81,10 +81,27 @@ namespace PrimeITServer.Infrastructure
             services.AddHealthChecks()
             .AddCheck("health-check", () => HealthCheckResult.Healthy())
             .AddDbContextCheck<ApplicationDbContext>()
-            .AddElasticsearch(configuration["Elasticsearch:Url"] ?? "http://localhost:9200")
+            .AddCheck<ElasticsearchHealthCheck>("Elasticsearch")
             ;
 
             return services;
+        }
+    }
+
+    public class ElasticsearchHealthCheck : IHealthCheck
+    {
+        private readonly Nest.IElasticClient _client;
+        public ElasticsearchHealthCheck(Nest.IElasticClient client)
+        {
+            _client = client;
+        }
+
+        public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
+        {
+            var response = await _client.PingAsync(ct: cancellationToken);
+            return response.IsValid 
+                ? HealthCheckResult.Healthy() 
+                : HealthCheckResult.Unhealthy("Elasticsearch is not reachable");
         }
     }
 }

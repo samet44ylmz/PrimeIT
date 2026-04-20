@@ -10,3 +10,4 @@ C:\PrimeIT\PrimeITServer\PrimeITServer.Domain\obj\Debug\net8.0\PrimeITServer.Dom
 C:\PrimeIT\PrimeITServer\PrimeITServer.Domain\obj\Debug\net8.0\refint\PrimeITServer.Domain.dll
 C:\PrimeIT\PrimeITServer\PrimeITServer.Domain\obj\Debug\net8.0\PrimeITServer.Domain.pdb
 C:\PrimeIT\PrimeITServer\PrimeITServer.Domain\obj\Debug\net8.0\ref\PrimeITServer.Domain.dll
+C:\PrimeIT\PrimeITServer\PrimeITServer.Domain\obj\Debug\net8.0\PrimeITServer.Domain.sourcelink.json

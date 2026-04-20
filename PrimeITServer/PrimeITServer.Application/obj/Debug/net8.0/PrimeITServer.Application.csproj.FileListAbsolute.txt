@@ -13,3 +13,4 @@ C:\PrimeIT\PrimeITServer\PrimeITServer.Application\obj\Debug\net8.0\PrimeITServe
 C:\PrimeIT\PrimeITServer\PrimeITServer.Application\obj\Debug\net8.0\refint\PrimeITServer.Application.dll
 C:\PrimeIT\PrimeITServer\PrimeITServer.Application\obj\Debug\net8.0\PrimeITServer.Application.pdb
 C:\PrimeIT\PrimeITServer\PrimeITServer.Application\obj\Debug\net8.0\ref\PrimeITServer.Application.dll
+C:\PrimeIT\PrimeITServer\PrimeITServer.Application\obj\Debug\net8.0\PrimeITServer.Application.sourcelink.json

@@ -255,6 +255,16 @@
   },
   {
     "ContainingType": "PrimeITServer.WebAPI.Controllers.JobsController",
+    "Method": "Sync",
+    "RelativePath": "api/Jobs/sync",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PrimeITServer.WebAPI.Controllers.JobsController",
     "Method": "ToggleStatus",
     "RelativePath": "api/Jobs/toggle-status",
     "HttpMethod": "POST",

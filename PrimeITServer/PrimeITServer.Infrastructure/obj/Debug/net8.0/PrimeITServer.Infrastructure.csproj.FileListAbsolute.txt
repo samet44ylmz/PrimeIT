@@ -17,3 +17,4 @@ C:\PrimeIT\PrimeITServer\PrimeITServer.Infrastructure\obj\Debug\net8.0\refint\Pr
 C:\PrimeIT\PrimeITServer\PrimeITServer.Infrastructure\obj\Debug\net8.0\PrimeITServer.Infrastructure.pdb
 C:\PrimeIT\PrimeITServer\PrimeITServer.Infrastructure\obj\Debug\net8.0\PrimeITServer.Infrastructure.genruntimeconfig.cache
 C:\PrimeIT\PrimeITServer\PrimeITServer.Infrastructure\obj\Debug\net8.0\ref\PrimeITServer.Infrastructure.dll
+C:\PrimeIT\PrimeITServer\PrimeITServer.Infrastructure\obj\Debug\net8.0\PrimeITServer.Infrastructure.sourcelink.json
