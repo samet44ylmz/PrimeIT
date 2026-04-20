@@ -139,45 +139,45 @@ export const Profile: React.FC = () => {
   };
 
   return (
-    <div className="w-full fade-in flex flex-col bg-[#030305] min-h-screen pb-32">
+    <div className="w-full fade-in flex flex-col bg-[#030305] min-h-screen pb-24">
       {/* Lunar Header */}
-      <section className="bg-[#030305] border-b border-white/5 py-16 px-6 md:px-10">
-        <div className="max-w-4xl mx-auto flex flex-col gap-6">
-            <div className="flex items-center gap-4">
-               <div className="w-10 h-10 bg-indigo-500/10 rounded-full flex justify-center items-center">
-                   <User className="w-5 h-5 text-indigo-400" />
+      <section className="bg-[#030305] border-b border-white/5 py-12 md:py-16 px-6 md:px-10">
+        <div className="max-w-4xl mx-auto flex flex-col gap-4 md:gap-6">
+            <div className="flex items-center gap-3 md:gap-4">
+               <div className="w-8 h-8 md:w-10 md:h-10 bg-indigo-500/10 rounded-full flex justify-center items-center">
+                   <User className="w-4 h-4 md:w-5 md:h-5 text-indigo-400" />
                </div>
-               <span className="m-label text-white/50">PERSONNEL DOSSIER</span>
+               <span className="m-label text-[10px] md:text-xs text-white/50 tracking-widest">PERSONNEL DOSSIER</span>
             </div>
-            <h1 className="m-title text-4xl md:text-6xl uppercase tracking-tight">
-               PROFİLİM <br/> <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">YÖNETİMİ.</span>
+            <h1 className="m-title text-3xl md:text-6xl uppercase tracking-tight leading-tight">
+               PROFİLİM <br className="hidden md:block"/> <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">YÖNETİMİ.</span>
             </h1>
-            <p className="text-white/50 text-lg font-medium max-w-2xl">
+            <p className="text-white/50 text-base md:text-lg font-medium max-w-2xl">
                 Profesyonel kimliğinizi en iyi şekilde yansıtın. Kariyerinize odaklanan gelişmiş profil yönetimi.
             </p>
         </div>
       </section>
 
       {/* Lunar Spaced Form */}
-      <section className="w-full max-w-4xl mx-auto mt-16 px-6 md:px-10">
-         <form onSubmit={(e) => { e.preventDefault(); mutation.mutate(form); }} className="w-full space-y-8">
+      <section className="w-full max-w-4xl mx-auto mt-8 md:mt-16 px-4 md:px-10">
+         <form onSubmit={(e) => { e.preventDefault(); mutation.mutate(form); }} className="w-full space-y-6 md:space-y-8">
             
             {/* Summary Section */}
-            <div className="m-card p-8 md:p-10 relative group">
-                <div className="flex flex-col gap-6 mb-6">
-                    <div className="flex items-center gap-5">
-                         <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center shadow-lg">
-                            <Target className="w-6 h-6 text-white/80" />
+            <div className="m-card p-6 md:p-10 relative group">
+                <div className="flex flex-col gap-4 md:gap-6 mb-6">
+                    <div className="flex items-center gap-4 md:gap-5">
+                         <div className="w-10 h-10 md:w-12 md:h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center shadow-lg">
+                            <Target className="w-5 h-5 md:w-6 md:h-6 text-white/80" />
                          </div>
                         <div>
-                           <h2 className="m-title text-2xl">PROFESYONEL ÖZET</h2>
-                           <p className="text-white/40 text-sm mt-1">Kariyer hedeflerinizi ve en güçlü yanlarınızı özetleyin.</p>
+                           <h2 className="m-title text-xl md:text-2xl uppercase tracking-wide">PROFESYONEL ÖZET</h2>
+                           <p className="text-white/40 text-[10px] md:text-sm mt-0.5">Kariyer hedeflerinizi ve en güçlü yanlarınızı özetleyin.</p>
                         </div>
                     </div>
                 </div>
                 <div className="w-full">
                     <textarea 
-                        className="m-input min-h-[200px] resize-none"
+                        className="m-input min-h-[160px] md:min-h-[200px] resize-none !text-sm md:!text-base"
                         value={form.summary}
                         onChange={e => setForm({ ...form, summary: e.target.value })}
                         placeholder="Yazılım dünyasındaki vizyonunuzu buraya aktarın..."
@@ -186,161 +186,161 @@ export const Profile: React.FC = () => {
             </div>
 
             {/* Experience Section */}
-            <div className="m-card p-8 md:p-10 relative">
-                <div className="flex justify-between items-start md:items-center mb-8 flex-col md:flex-row gap-6">
-                    <div className="flex items-center gap-5">
-                        <div className="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center border border-indigo-500/20">
-                           <Briefcase className="w-6 h-6 text-indigo-400" />
+            <div className="m-card p-6 md:p-10 relative">
+                <div className="flex justify-between items-start md:items-center mb-6 md:mb-8 flex-col md:flex-row gap-4 md:gap-6">
+                    <div className="flex items-center gap-4 md:gap-5">
+                        <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center border border-indigo-500/20">
+                           <Briefcase className="w-5 h-5 md:w-6 md:h-6 text-indigo-400" />
                         </div>
-                        <h2 className="m-title text-2xl">İŞ TECRÜBELERİ</h2>
+                        <h2 className="m-title text-xl md:text-2xl uppercase tracking-wide">İŞ TECRÜBELERİ</h2>
                     </div>
-                    <button type="button" onClick={() => handleAddField('exp')} className="m-btn-secondary !py-3 flex items-center gap-2 !text-xs">
-                        <Plus className="w-4 h-4" /> KAYIT EKLE
+                    <button type="button" onClick={() => handleAddField('exp')} className="m-btn-secondary !py-2.5 md:!py-3 flex items-center gap-2 !px-6 !text-[10px] md:!text-xs w-full md:w-auto justify-center">
+                        <Plus className="w-3.5 h-3.5" /> KAYIT EKLE
                     </button>
                 </div>
                 
                 <div className="flex flex-col gap-6">
                     {form.experiences.map((exp, i) => (
-                        <div key={i} className="p-6 md:p-8 border border-white/5 bg-white/[0.02] rounded-2xl relative">
+                        <div key={i} className="p-5 md:p-8 border border-white/5 bg-white/[0.02] rounded-2xl relative">
                             <button 
                                 type="button" 
                                 onClick={() => setForm({ ...form, experiences: form.experiences.filter((_, idx) => idx !== i) })}
-                                className="absolute top-6 right-6 text-red-400 opacity-40 hover:opacity-100 transition-opacity"
+                                className="absolute top-4 right-4 md:top-6 md:right-6 text-red-400 opacity-40 hover:opacity-100 transition-opacity p-1"
                             >
-                                <X className="w-5 h-5" />
+                                <X className="w-4 h-4 md:w-5 md:h-5" />
                             </button>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                                <div className="space-y-2">
-                                    <label className="m-label text-white/50">ŞİRKET ADI</label>
-                                    <input className="m-input" value={exp.companyName} onChange={e => handleUpdateField('exp', i, 'companyName', e.target.value)} placeholder="Örn: PrimeIT" />
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6">
+                                <div className="space-y-1.5 md:space-y-2">
+                                    <label className="m-label text-[10px] md:text-xs text-white/50">ŞİRKET ADI</label>
+                                    <input className="m-input !py-3 md:!py-4" value={exp.companyName} onChange={e => handleUpdateField('exp', i, 'companyName', e.target.value)} placeholder="Örn: PrimeIT" />
                                 </div>
-                                <div className="space-y-2">
-                                    <label className="m-label text-white/50">POZİSYON / UNVAN</label>
-                                    <input className="m-input" value={exp.title} onChange={e => handleUpdateField('exp', i, 'title', e.target.value)} placeholder="Senior Software Engineer" />
+                                <div className="space-y-1.5 md:space-y-2">
+                                    <label className="m-label text-[10px] md:text-xs text-white/50">POZİSYON / UNVAN</label>
+                                    <input className="m-input !py-3 md:!py-4" value={exp.title} onChange={e => handleUpdateField('exp', i, 'title', e.target.value)} placeholder="Senior Software Engineer" />
                                 </div>
                             </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                                <div className="space-y-2">
-                                    <label className="m-label text-white/50">BAŞLANGIÇ</label>
-                                    <input type="date" className="m-input" value={exp.startDate?.split('T')[0] || ''} onChange={e => handleUpdateField('exp', i, 'startDate', e.target.value)} />
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6">
+                                <div className="space-y-1.5 md:space-y-2">
+                                    <label className="m-label text-[10px] md:text-xs text-white/50">BAŞLANGIÇ</label>
+                                    <input type="date" className="m-input !py-3 md:!py-4" value={exp.startDate?.split('T')[0] || ''} onChange={e => handleUpdateField('exp', i, 'startDate', e.target.value)} />
                                 </div>
-                                <div className="space-y-2">
-                                    <label className="m-label text-white/50">BİTİŞ</label>
-                                    <input type="date" disabled={exp.isCurrent} className="m-input disabled:opacity-30" value={exp.endDate?.split('T')[0] || ''} onChange={e => handleUpdateField('exp', i, 'endDate', e.target.value)} />
+                                <div className="space-y-1.5 md:space-y-2">
+                                    <label className="m-label text-[10px] md:text-xs text-white/50">BİTİŞ</label>
+                                    <input type="date" disabled={exp.isCurrent} className="m-input !py-3 md:!py-4 disabled:opacity-20" value={exp.endDate?.split('T')[0] || ''} onChange={e => handleUpdateField('exp', i, 'endDate', e.target.value)} />
                                 </div>
                             </div>
                             <div className="flex items-center gap-3 mb-6">
-                                <input type="checkbox" checked={exp.isCurrent} onChange={e => handleUpdateField('exp', i, 'isCurrent', e.target.checked)} className="w-4 h-4 accent-indigo-500 rounded" />
-                                <label className="m-label text-white/80">HALEN ÇALIŞIYORUM</label>
+                                <input type="checkbox" checked={exp.isCurrent} onChange={e => handleUpdateField('exp', i, 'isCurrent', e.target.checked)} className="w-4 h-4 accent-indigo-500 rounded bg-[#030305] border-white/10" />
+                                <label className="m-label text-[10px] md:text-xs text-white/80 normal-case tracking-normal">HALEN ÇALIŞIYORUM</label>
                             </div>
-                            <div className="space-y-2">
-                                <label className="m-label text-white/50">GÖREV TANIMI</label>
-                                <textarea className="m-input min-h-[100px] resize-none" value={exp.description} onChange={e => handleUpdateField('exp', i, 'description', e.target.value)} placeholder="Neler başardınız? Hangi teknolojileri kullandınız?" />
+                            <div className="space-y-1.5 md:space-y-2">
+                                <label className="m-label text-[10px] md:text-xs text-white/50">GÖREV TANIMI</label>
+                                <textarea className="m-input min-h-[100px] resize-none !text-sm" value={exp.description} onChange={e => handleUpdateField('exp', i, 'description', e.target.value)} placeholder="Neler başardınız? Hangi teknolojileri kullandınız?" />
                             </div>
                         </div>
                     ))}
                     {form.experiences.length === 0 && (
-                       <p className="text-white/40 m-label text-center py-6 border border-dashed border-white/10 rounded-xl">HENÜZ İŞ TECRÜBESİ EKLENMEDİ</p>
+                       <p className="text-white/40 m-label text-[10px] md:text-xs text-center py-6 border border-dashed border-white/10 rounded-xl">HENÜZ İŞ TECRÜBESİ EKLENMEDİ</p>
                     )}
                 </div>
             </div>
 
             {/* Education Section */}
-            <div className="m-card p-8 md:p-10 relative">
-                <div className="flex justify-between items-start md:items-center mb-8 flex-col md:flex-row gap-6">
-                    <div className="flex items-center gap-5">
-                        <div className="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center border border-indigo-500/20">
-                           <GraduationCap className="w-6 h-6 text-indigo-400" />
+            <div className="m-card p-6 md:p-10 relative">
+                <div className="flex justify-between items-start md:items-center mb-6 md:mb-8 flex-col md:flex-row gap-4 md:gap-6">
+                    <div className="flex items-center gap-4 md:gap-5">
+                        <div className="w-10 h-10 md:w-12 md:h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center border border-indigo-500/20">
+                           <GraduationCap className="w-5 h-5 md:w-6 md:h-6 text-indigo-400" />
                         </div>
-                        <h2 className="m-title text-2xl">EĞİTİM BİLGİLERİ</h2>
+                        <h2 className="m-title text-xl md:text-2xl uppercase tracking-wide">EĞİTİM BİLGİLERİ</h2>
                     </div>
-                    <button type="button" onClick={() => handleAddField('edu')} className="m-btn-secondary !py-3 flex items-center gap-2 !text-xs">
-                        <Plus className="w-4 h-4" /> KAYIT EKLE
+                    <button type="button" onClick={() => handleAddField('edu')} className="m-btn-secondary !py-2.5 md:!py-3 flex items-center gap-2 !px-6 !text-[10px] md:!text-xs w-full md:w-auto justify-center">
+                        <Plus className="w-3.5 h-3.5" /> KAYIT EKLE
                     </button>
                 </div>
                 
                 <div className="flex flex-col gap-6">
                     {form.educations.map((edu, i) => (
-                        <div key={i} className="p-6 md:p-8 border border-white/5 bg-white/[0.02] rounded-2xl relative">
+                        <div key={i} className="p-5 md:p-8 border border-white/5 bg-white/[0.02] rounded-2xl relative">
                             <button 
                                 type="button" 
                                 onClick={() => setForm({ ...form, educations: form.educations.filter((_, idx) => idx !== i) })}
-                                className="absolute top-6 right-6 text-red-400 opacity-40 hover:opacity-100 transition-opacity"
+                                className="absolute top-4 right-4 md:top-6 md:right-6 text-red-400 opacity-40 hover:opacity-100 transition-opacity p-1"
                             >
-                                <X className="w-5 h-5" />
+                                <X className="w-4 h-4 md:w-5 md:h-5" />
                             </button>
-                            <div className="mb-6 space-y-2">
-                                <label className="m-label text-white/50">OKUL / ÜNİVERSİTE</label>
-                                <input className="m-input" value={edu.schoolName} onChange={e => handleUpdateField('edu', i, 'schoolName', e.target.value)} placeholder="İTÜ / ODTÜ vs." />
+                            <div className="mb-4 md:mb-6 space-y-1.5 md:space-y-2">
+                                <label className="m-label text-[10px] md:text-xs text-white/50">OKUL / ÜNİVERSİTE</label>
+                                <input className="m-input !py-3 md:!py-4" value={edu.schoolName} onChange={e => handleUpdateField('edu', i, 'schoolName', e.target.value)} placeholder="İTÜ / ODTÜ vs." />
                             </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                                <div className="space-y-2">
-                                    <label className="m-label text-white/50">DERECE</label>
-                                    <input className="m-input" value={edu.degree} onChange={e => handleUpdateField('edu', i, 'degree', e.target.value)} placeholder="Lisans / Yüksek Lisans" />
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6">
+                                <div className="space-y-1.5 md:space-y-2">
+                                    <label className="m-label text-[10px] md:text-xs text-white/50">DERECE</label>
+                                    <input className="m-input !py-3 md:!py-4" value={edu.degree} onChange={e => handleUpdateField('edu', i, 'degree', e.target.value)} placeholder="Lisans / Yüksek Lisans" />
                                 </div>
-                                <div className="space-y-2">
-                                    <label className="m-label text-white/50">BÖLÜM</label>
-                                    <input className="m-input" value={edu.fieldOfStudy} onChange={e => handleUpdateField('edu', i, 'fieldOfStudy', e.target.value)} placeholder="Mühendislik" />
+                                <div className="space-y-1.5 md:space-y-2">
+                                    <label className="m-label text-[10px] md:text-xs text-white/50">BÖLÜM</label>
+                                    <input className="m-input !py-3 md:!py-4" value={edu.fieldOfStudy} onChange={e => handleUpdateField('edu', i, 'fieldOfStudy', e.target.value)} placeholder="Mühendislik" />
                                 </div>
                             </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="m-label text-white/50">BAŞLANGIÇ</label>
-                                    <input type="date" className="m-input" value={edu.startDate?.split('T')[0] || ''} onChange={e => handleUpdateField('edu', i, 'startDate', e.target.value)} />
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                                <div className="space-y-1.5 md:space-y-2">
+                                    <label className="m-label text-[10px] md:text-xs text-white/50">BAŞLANGIÇ</label>
+                                    <input type="date" className="m-input !py-3 md:!py-4" value={edu.startDate?.split('T')[0] || ''} onChange={e => handleUpdateField('edu', i, 'startDate', e.target.value)} />
                                 </div>
-                                <div className="space-y-2">
-                                    <label className="m-label text-white/50">MEZUNİYET</label>
-                                    <input type="date" className="m-input" value={edu.endDate?.split('T')[0] || ''} onChange={e => handleUpdateField('edu', i, 'endDate', e.target.value)} />
+                                <div className="space-y-1.5 md:space-y-2">
+                                    <label className="m-label text-[10px] md:text-xs text-white/50">MEZUNİYET</label>
+                                    <input type="date" className="m-input !py-3 md:!py-4" value={edu.endDate?.split('T')[0] || ''} onChange={e => handleUpdateField('edu', i, 'endDate', e.target.value)} />
                                 </div>
                             </div>
                         </div>
                     ))}
                     {form.educations.length === 0 && (
-                       <p className="text-white/40 m-label text-center py-6 border border-dashed border-white/10 rounded-xl">HENÜZ EĞİTİM BİLGİSİ EKLENMEDİ</p>
+                       <p className="text-white/40 m-label text-[10px] md:text-xs text-center py-6 border border-dashed border-white/10 rounded-xl">HENÜZ EĞİTİM BİLGİSİ EKLENMEDİ</p>
                     )}
                 </div>
             </div>
 
             {/* Skills Section */}
-            <div className="m-card p-8 md:p-10 relative">
-                <div className="flex flex-col md:flex-row gap-6 mb-6 md:items-center">
-                    <div className="flex items-center gap-5">
-                        <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-xl flex items-center justify-center shadow-lg">
-                           <Code className="w-6 h-6 text-white" />
+            <div className="m-card p-6 md:p-10 relative">
+                <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-6 md:items-center">
+                    <div className="flex items-center gap-4 md:gap-5">
+                        <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-xl flex items-center justify-center shadow-lg">
+                           <Code className="w-5 h-5 md:w-6 md:h-6 text-white" />
                         </div>
-                        <h2 className="m-title text-2xl">TEKNİK YETENEKLER</h2>
+                        <h2 className="m-title text-xl md:text-2xl uppercase tracking-wide">TEKNİK YETENEKLER</h2>
                     </div>
                 </div>
                 
                 <div className="flex flex-col md:flex-row gap-3 mb-6">
                     <input 
-                        className="m-input flex-1" 
+                        className="m-input flex-1 !py-3 md:!py-4 !text-sm md:!text-base" 
                         value={newSkill} 
                         onChange={e => setNewSkill(e.target.value)}
                         placeholder="Örn: React, C#, MongoDB..."
                         onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddSkill())}
                     />
-                    <button type="button" onClick={handleAddSkill} className="m-btn-primary !py-3 px-8">EKLE</button>
+                    <button type="button" onClick={handleAddSkill} className="m-btn-primary !py-3.5 px-8 !text-xs">EKLE</button>
                 </div>
 
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2 md:gap-3">
                     {form.skills.map((skill, i) => (
-                        <div key={i} className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-white m-label flex items-center gap-3 group hover:border-red-500/30 transition-colors shadow-sm">
+                        <div key={i} className="px-3 md:px-4 py-1.5 md:py-2 bg-white/5 border border-white/10 rounded-full text-white m-label text-[9px] md:text-xs flex items-center gap-2 md:gap-3 group hover:border-red-500/30 transition-colors shadow-sm normal-case tracking-normal font-medium">
                             {skill}
-                            <button type="button" onClick={() => setForm({ ...form, skills: form.skills.filter((_, idx) => idx !== i) })} className="text-red-400 opacity-40 group-hover:opacity-100 transition-opacity">×</button>
+                            <button type="button" onClick={() => setForm({ ...form, skills: form.skills.filter((_, idx) => idx !== i) })} className="text-red-400 opacity-40 group-hover:opacity-100 transition-opacity text-base">×</button>
                         </div>
                     ))}
                     {form.skills.length === 0 && (
-                        <span className="text-white/40 m-label block w-full text-center py-6 border border-dashed border-white/10 rounded-xl">LİSTE BOŞ</span>
+                        <span className="text-white/40 m-label text-[10px] md:text-xs block w-full text-center py-6 border border-dashed border-white/10 rounded-xl">LİSTE BOŞ</span>
                     )}
                 </div>
             </div>
 
             {/* Save Button */}
             <div className="pt-4">
-                <button type="submit" disabled={mutation.isPending} className="m-btn-primary w-full !py-5 flex items-center justify-center gap-4 text-lg">
+                <button type="submit" disabled={mutation.isPending} className="m-btn-primary w-full !py-4 md:!py-5 flex items-center justify-center gap-3 md:gap-4 text-base md:text-lg">
                    {mutation.isPending ? <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : (
-                     <><Save className="w-5 h-5" /> PROFİLİ GÜNCELLE</>
+                     <><Save className="w-5 h-5 md:w-6 md:h-6" /> PROFİLİ GÜNCELLE</>
                    )}
                 </button>
             </div>

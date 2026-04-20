@@ -18,6 +18,7 @@ using MongoDB.Bson.Serialization.Serializers;
 using Microsoft.EntityFrameworkCore;
 using Hangfire;
 using Hangfire.Redis.StackExchange;
+using RedisRateLimiting;
 
 // Register Guid Serializer for MongoDB
 BsonSerializer.RegisterSerializer(new MongoDB.Bson.Serialization.Serializers.GuidSerializer(MongoDB.Bson.GuidRepresentation.Standard));
