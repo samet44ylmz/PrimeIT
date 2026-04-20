@@ -33,12 +33,12 @@ jobs:
         host: ${{ secrets.SERVER_HOST }}
         username: ${{ secrets.SERVER_USER }}
         key: ${{ secrets.SERVER_SSH_KEY }}
-        envs: MONGO_CONNECTION_STRING,POSTGRES_PASSWORD,JWT_SECRET_KEY,ELASTICSEARCH_URL,MONGO_DATABASE_NAME,POSTGRES_USER,POSTGRES_DB,JWT_ISSUER,JWT_AUDIENCE
+        envs: MONGO_CONNECTION_STRING,POSTGRES_PASSWORD,JWT_SECRET_KEY,ELASTICSEARCH_URL,MONGO_DATABASE_NAME,POSTGRES_USER,POSTGRES_DB,JWT_ISSUER,JWT_AUDIENCE,REDIS_URL,SEQ_URL,GROQ_API_KEY
         script: |
-         cd ~/PrimeIT
+          cd ~/PrimeIT || exit 1
           git pull origin main
           
-          # Create/Update .env file on the fly
+          # Create/Update .env file with all production variables
           echo "POSTGRES_USER=${POSTGRES_USER:-postgres}" > .env
           echo "POSTGRES_DB=${POSTGRES_DB:-PrimeITServerDb}" >> .env
           echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" >> .env
@@ -48,8 +48,12 @@ jobs:
           echo "JWT_ISSUER=${JWT_ISSUER:-Me}" >> .env
           echo "JWT_AUDIENCE=${JWT_AUDIENCE:-My Projects}" >> .env
           echo "ELASTICSEARCH_URL=${ELASTICSEARCH_URL:-http://elasticsearch:9200}" >> .env
+          echo "REDIS_URL=${REDIS_URL:-redis:6379}" >> .env
+          echo "SEQ_URL=${SEQ_URL:-http://seq:5341}" >> .env
+          echo "GROQ_API_KEY=$GROQ_API_KEY" >> .env
 
-          docker-compose -f docker-compose.yml down
+          # Refresh the environment
+          docker-compose -f docker-compose.yml down --remove-orphans
           docker-compose -f docker-compose.yml up -d --build
       env:
         MONGO_CONNECTION_STRING: ${{ secrets.MONGO_CONNECTION_STRING }}
@@ -61,3 +65,6 @@ jobs:
         POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
         JWT_ISSUER: ${{ secrets.JWT_ISSUER }}
         JWT_AUDIENCE: ${{ secrets.JWT_AUDIENCE }}
+        REDIS_URL: ${{ secrets.REDIS_URL }}
+        SEQ_URL: ${{ secrets.SEQ_URL }}
+        GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
