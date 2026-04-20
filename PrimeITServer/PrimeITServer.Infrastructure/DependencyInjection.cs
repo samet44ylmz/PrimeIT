@@ -54,7 +54,8 @@ namespace PrimeITServer.Infrastructure
 
             services.AddSingleton<Nest.IElasticClient>(sp =>
             {
-                var settings = new Nest.ConnectionSettings(new Uri(configuration["Elasticsearch:Url"] ?? "http://localhost:9200"))
+                var url = configuration["Elasticsearch:Url"] ?? "http://localhost:9200";
+                var settings = new Nest.ConnectionSettings(new Uri(url))
                     .DefaultIndex("jobs");
                 return new Nest.ElasticClient(settings);
             });
@@ -80,6 +81,7 @@ namespace PrimeITServer.Infrastructure
             services.AddHealthChecks()
             .AddCheck("health-check", () => HealthCheckResult.Healthy())
             .AddDbContextCheck<ApplicationDbContext>()
+            .AddElasticsearch(configuration["Elasticsearch:Url"] ?? "http://localhost:9200")
             ;
 
             return services;

@@ -10,4 +10,6 @@ public interface IElasticSearchService
     Task IndexJobAsync(Job job, CancellationToken cancellationToken = default);
     Task<IEnumerable<Job>> SearchJobsAsync(string query, CancellationToken cancellationToken = default);
     Task DeleteJobAsync(Guid jobId, CancellationToken cancellationToken = default);
+    Task CreateIndexWithMappingAsync(CancellationToken cancellationToken = default);
+    Task SyncAllJobsAsync(IEnumerable<Job> jobs, CancellationToken cancellationToken = default);
 }

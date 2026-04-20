@@ -78,4 +78,11 @@ public class JobsController : ControllerBase
         var result = await _mediator.Send(new ToggleJobStatusCommand(jobId, employerId), cancellationToken);
         return StatusCode(result.StatusCode, result);
     }
+
+    [HttpPost("sync")]
+    public async Task<IActionResult> Sync(CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new SyncJobsToElasticSearchCommand(), cancellationToken);
+        return StatusCode(result.StatusCode, result);
+    }
 }
