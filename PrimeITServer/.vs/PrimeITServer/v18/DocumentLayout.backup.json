@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\PrimeIT\\PrimeITServer\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CBBE3920-9513-43C1-BC35-4875EEB057D0}|PrimeITServer.WebAPI\\PrimeITServer.WebAPI.csproj|c:\\primeit\\primeitserver\\primeitserver.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBBE3920-9513-43C1-BC35-4875EEB057D0}|PrimeITServer.WebAPI\\PrimeITServer.WebAPI.csproj|solutionrelative:primeitserver.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{16706A37-D258-495C-80EF-57B05EA9E25C}|PrimeITServer.Application\\PrimeITServer.Application.csproj|c:\\primeit\\primeitserver\\primeitserver.application\\features\\applications\\commands\\evaluateapplicationwithaicommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{16706A37-D258-495C-80EF-57B05EA9E25C}|PrimeITServer.Application\\PrimeITServer.Application.csproj|solutionrelative:primeitserver.application\\features\\applications\\commands\\evaluateapplicationwithaicommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -47,6 +51,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\PrimeIT\\PrimeITServer\\PrimeITServer.WebAPI\\Program.cs",
+              "RelativeDocumentMoniker": "PrimeITServer.WebAPI\\Program.cs",
+              "ToolTip": "C:\\PrimeIT\\PrimeITServer\\PrimeITServer.WebAPI\\Program.cs",
+              "RelativeToolTip": "PrimeITServer.WebAPI\\Program.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAqwK4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T05:32:23.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "EvaluateApplicationWithAiCommand.cs",
               "DocumentMoniker": "C:\\PrimeIT\\PrimeITServer\\PrimeITServer.Application\\Features\\Applications\\Commands\\EvaluateApplicationWithAiCommand.cs",
               "RelativeDocumentMoniker": "PrimeITServer.Application\\Features\\Applications\\Commands\\EvaluateApplicationWithAiCommand.cs",
@@ -59,7 +76,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "20260419144444_mg9.cs",
               "DocumentMoniker": "C:\\PrimeIT\\PrimeITServer\\PrimeITServer.Infrastructure\\Migrations\\20260419144444_mg9.cs",
               "RelativeDocumentMoniker": "PrimeITServer.Infrastructure\\Migrations\\20260419144444_mg9.cs",
@@ -71,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "20260419130637_mg8.cs",
               "DocumentMoniker": "C:\\PrimeIT\\PrimeITServer\\PrimeITServer.Infrastructure\\Migrations\\20260419130637_mg8.cs",
               "RelativeDocumentMoniker": "PrimeITServer.Infrastructure\\Migrations\\20260419130637_mg8.cs",
@@ -83,7 +100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ApplyToJobCommand.cs",
               "DocumentMoniker": "C:\\PrimeIT\\PrimeITServer\\PrimeITServer.Application\\Features\\Applications\\Commands\\ApplyToJobCommand.cs",
               "RelativeDocumentMoniker": "PrimeITServer.Application\\Features\\Applications\\Commands\\ApplyToJobCommand.cs",
@@ -95,7 +112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "20260419112406_mg6.cs",
               "DocumentMoniker": "C:\\PrimeIT\\PrimeITServer\\PrimeITServer.Infrastructure\\Migrations\\20260419112406_mg6.cs",
               "RelativeDocumentMoniker": "PrimeITServer.Infrastructure\\Migrations\\20260419112406_mg6.cs",
@@ -107,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\PrimeIT\\PrimeITServer\\PrimeITServer.WebAPI\\appsettings.json",
               "RelativeDocumentMoniker": "PrimeITServer.WebAPI\\appsettings.json",
