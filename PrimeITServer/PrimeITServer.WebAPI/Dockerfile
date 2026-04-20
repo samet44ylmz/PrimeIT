@@ -4,10 +4,13 @@ EXPOSE 8080
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
+# Copy all csproj files first for caching
 COPY ["PrimeITServer.WebAPI/PrimeITServer.WebAPI.csproj", "PrimeITServer.WebAPI/"]
 COPY ["PrimeITServer.Application/PrimeITServer.Application.csproj", "PrimeITServer.Application/"]
 COPY ["PrimeITServer.Domain/PrimeITServer.Domain.csproj", "PrimeITServer.Domain/"]
 COPY ["PrimeITServer.Infrastructure/PrimeITServer.Infrastructure.csproj", "PrimeITServer.Infrastructure/"]
+
+# Restore with retry and detail
 RUN dotnet restore "PrimeITServer.WebAPI/PrimeITServer.WebAPI.csproj"
 
 COPY . .

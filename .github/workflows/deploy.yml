@@ -14,19 +14,6 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3
 
-    # - name: Setup .NET
-    #   uses: actions/setup-dotnet@v3
-    #   with:
-    #     dotnet-version: '8.0.x'
-    
-    # - name: Setup Node
-    #   uses: actions/setup-node@v3
-    #   with:
-    #     node-version: '20'
-
-    # (In a real scenario, you'd build images and push to Docker Hub here,
-    # then SSH into your Ubuntu server to pull and restart docker-compose)
-
     - name: Deploy to Ubuntu Server via SSH
       uses: appleboy/ssh-action@v1.0.0
       with:
@@ -53,8 +40,14 @@ jobs:
           echo "GROQ_API_KEY=$GROQ_API_KEY" >> .env
 
           # Refresh the environment
-          docker-compose -f docker-compose.yml down --remove-orphans
-          docker-compose -f docker-compose.yml up -d --build
+          echo "Eski konteynerlar durduruluyor..."
+          docker-compose -f docker-compose.yml down --remove-orphans || true
+          
+          echo "Build süreci başlıyor (cache temizlenerek)..."
+          docker-compose -f docker-compose.yml build --no-cache
+          
+          echo "Servisler ayağa kaldırılıyor..."
+          docker-compose -f docker-compose.yml up -d
       env:
         MONGO_CONNECTION_STRING: ${{ secrets.MONGO_CONNECTION_STRING }}
         POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
