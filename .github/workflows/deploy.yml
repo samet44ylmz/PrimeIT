@@ -35,7 +35,7 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         envs: MONGO_CONNECTION_STRING,POSTGRES_PASSWORD,JWT_SECRET_KEY,ELASTICSEARCH_URL,MONGO_DATABASE_NAME,POSTGRES_USER,POSTGRES_DB,JWT_ISSUER,JWT_AUDIENCE
         script: |
-          cd /var/www/PrimeIT
+         cd ~/PrimeIT
           git pull origin main
           
           # Create/Update .env file on the fly
