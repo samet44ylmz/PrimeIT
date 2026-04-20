@@ -85,6 +85,8 @@ services:
       context: ./PrimeITServer
       dockerfile: PrimeITServer.WebAPI/Dockerfile
     container_name: primeit_backend
+    expose:
+      - "8080"
     depends_on:
       postgres:
         condition: service_healthy
@@ -94,7 +96,7 @@ services:
         condition: service_healthy
     environment:
       - ConnectionStrings__PostgreSQL=Host=postgres;Database=${POSTGRES_DB:-PrimeITServerDb};Username=${POSTGRES_USER:-postgres};Password=${POSTGRES_PASSWORD:-password123}
-      - ConnectionStrings__Redis=primeit_redis:6379
+      - ConnectionStrings__Redis=redis:6379
       - MongoDbOptions__ConnectionString=${MONGO_CONNECTION_STRING:-}
       - MongoDbOptions__DatabaseName=${MONGO_DATABASE_NAME:-PrimeITResumesDb}
       - Elasticsearch__Url=http://elasticsearch:9200
