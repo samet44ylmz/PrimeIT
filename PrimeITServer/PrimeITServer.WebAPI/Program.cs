@@ -21,7 +21,7 @@ using Hangfire.Redis.StackExchange;
 using RedisRateLimiting;
 
 // Register Guid Serializer for MongoDB
-BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+BsonSerializer.RegisterSerializer(new MongoDB.Bson.Serialization.Serializers.GuidSerializer(MongoDB.Bson.GuidRepresentation.Standard));
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((context, configuration) =>
@@ -84,9 +84,9 @@ builder.Services.AddSwaggerGen(setup =>
                 });
 });
 
-builder.Services.AddRateLimiter(options =>
+builder.Services.AddRateLimiter(rateLimiterOptions =>
 {
-    options.AddRedisFixedWindowLimiter("fixed", opt =>
+    rateLimiterOptions.AddRedisFixedWindowLimiter("fixed", opt =>
     {
         opt.ConnectionMultiplexerFactory = () => StackExchange.Redis.ConnectionMultiplexer.Connect(builder.Configuration.GetConnectionString("Redis") ?? "localhost:6379");
         opt.Window = TimeSpan.FromSeconds(1);
