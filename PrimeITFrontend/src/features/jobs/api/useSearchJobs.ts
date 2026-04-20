@@ -15,13 +15,13 @@ export interface Job {
 }
 
 const fetchAllJobs = async (): Promise<Job[]> => {
-  const { data } = await axios.get<Job[]>('https://localhost:7054/api/jobs/GetAll');
+  const { data } = await axios.get<Job[]>('/api/jobs/GetAll');
   return data;
 };
 
 const fetchJobs = async (searchQuery: string): Promise<Job[]> => {
   if (!searchQuery) return [];
-  const { data } = await axios.get<Job[]>(`https://localhost:7054/api/jobs/Search`, {
+  const { data } = await axios.get<Job[]>(`/api/jobs/Search`, {
     params: { q: searchQuery }
   });
   return data;

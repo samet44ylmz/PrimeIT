@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../store';
 import { Link } from 'react-router-dom';
 import { ApplicantDetailsModal } from '../components/ApplicantDetailsModal';
+import { SkeletonList } from '../components/Skeletons';
 
 interface Job {
   id: string;
@@ -34,7 +35,7 @@ export const JobBoard: React.FC = () => {
   const { data: jobs, isLoading } = useQuery({
     queryKey: ['jobs'],
     queryFn: async () => {
-      const res = await axios.get('https://localhost:7054/api/Jobs/get-all');
+      const res = await axios.get('/api/Jobs/get-all');
       return res.data;
     },
     enabled: !debouncedSearch,
@@ -43,7 +44,7 @@ export const JobBoard: React.FC = () => {
   const { data: searchResults, isFetching: isSearching } = useQuery({
     queryKey: ['jobs', 'search', debouncedSearch],
     queryFn: async () => {
-      const res = await axios.get(`https://localhost:7054/api/Jobs/search?q=${debouncedSearch}`);
+      const res = await axios.get(`/api/Jobs/search?q=${debouncedSearch}`);
       return res.data;
     },
     enabled: !!debouncedSearch,
@@ -52,7 +53,7 @@ export const JobBoard: React.FC = () => {
   const { data: myApplications } = useQuery({
     queryKey: ['my-applications', userId],
     queryFn: async () => {
-      const res = await axios.get('https://localhost:7054/api/Applications/MyApplications', {
+      const res = await axios.get('/api/Applications/MyApplications', {
         params: { userId },
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -100,12 +101,7 @@ export const JobBoard: React.FC = () => {
 
       {/* Lunar Job Grid */}
       <section className="m-section">
-          {isLoading && (
-              <div className="py-40 flex flex-col items-center justify-center opacity-40">
-                  <div className="w-12 h-12 border-2 border-violet-500/20 border-t-violet-500 rounded-full animate-spin mb-6"></div>
-                  <span className="m-label">SİSTEM YÜKLENİYOR</span>
-              </div>
-          )}
+          {isLoading && <SkeletonList count={6} />}
 
           <div className="m-grid">
               {displayJobs?.map((job: Job) => (

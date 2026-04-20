@@ -29,7 +29,7 @@ export const ApplicantDetailsModal: React.FC<Props> = ({ jobId, jobTitle, questi
       formData.append('AnswersJson', JSON.stringify(answers));
       if (cvFile) formData.append('CVFile', cvFile);
 
-      await axios.post('https://localhost:7054/api/Applications/Apply', formData, {
+      await axios.post('/api/Applications/Apply', formData, {
         headers: { 
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}` 

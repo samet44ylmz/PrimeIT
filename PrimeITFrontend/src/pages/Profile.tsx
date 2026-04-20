@@ -47,7 +47,7 @@ export const Profile: React.FC = () => {
     queryKey: ['my-resume'],
     queryFn: async () => {
       try {
-        const { data } = await axios.get('https://localhost:7054/api/Resumes/my-resume', {
+        const { data } = await axios.get('/api/Resumes/my-resume', {
           headers: { Authorization: `Bearer ${token}` }
         });
         return data;
@@ -97,7 +97,7 @@ export const Profile: React.FC = () => {
   const mutation = useMutation({
     mutationFn: async (updatedResume: Resume) => {
       const normalized = normalizeResumeData(updatedResume);
-      await axios.post('https://localhost:7054/api/Resumes', normalized, {
+      await axios.post('/api/Resumes', normalized, {
         headers: { Authorization: `Bearer ${token}` }
       });
     },

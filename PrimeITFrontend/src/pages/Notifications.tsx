@@ -24,7 +24,7 @@ export const Notifications: React.FC = () => {
   const fetchNotifications = async () => {
     if (!token) return;
     try {
-      const response = await axios.get('https://localhost:7054/api/Notifications', {
+      const response = await axios.get('/api/Notifications', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setNotifications(response.data.data);
@@ -37,7 +37,7 @@ export const Notifications: React.FC = () => {
   const markAsRead = async (id: string) => {
     if (!token) return;
     try {
-      await axios.post(`https://localhost:7054/api/Notifications/${id}/mark-as-read`, {}, {
+      await axios.post(`/api/Notifications/${id}/mark-as-read`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setNotifications(prev => prev.map(n => n.id === id ? { ...n, isRead: true } : n));

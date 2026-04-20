@@ -32,7 +32,7 @@ const ResumeSection = ({ userId, token }: { userId: string, token: string }) => 
   const { data: resume, isLoading, error } = useQuery({
     queryKey: ['resume', userId],
     queryFn: async () => {
-      const { data } = await axios.get(`https://localhost:7054/api/Resumes/user/${userId}`, {
+      const { data } = await axios.get(`/api/Resumes/user/${userId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       return data;
@@ -122,7 +122,7 @@ export const EmployerApplications: React.FC = () => {
   const { data: applicants, isLoading } = useQuery({
     queryKey: ['employer-applications', statusFilter],
     queryFn: async () => {
-      const { data } = await axios.get<EmployerApplicant[]>('https://localhost:7054/api/Applications/GetEmployerApplications', {
+      const { data } = await axios.get<EmployerApplicant[]>('/api/Applications/GetEmployerApplications', {
         params: { status: statusFilter === 'All' ? null : statusFilter },
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -147,7 +147,7 @@ export const EmployerApplications: React.FC = () => {
   const handleUpdateStatus = async (applicationId: string, newStatus: string, message?: string) => {
     setUpdatingId(applicationId + newStatus);
     try {
-      await axios.post('https://localhost:7054/api/Applications/UpdateStatus', { 
+      await axios.post('/api/Applications/UpdateStatus', { 
         applicationId, 
         newStatus,
         message: message || null

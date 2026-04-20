@@ -36,7 +36,7 @@ export const MyApplications: React.FC = () => {
   const { data: apps, isLoading } = useQuery({
     queryKey: ['my-applications', userId],
     queryFn: async () => {
-      const { data } = await axios.get<MyApp[]>('https://localhost:7054/api/Applications/MyApplications', {
+      const { data } = await axios.get<MyApp[]>('/api/Applications/MyApplications', {
         params: { userId },
         headers: { Authorization: `Bearer ${token}` }
       });

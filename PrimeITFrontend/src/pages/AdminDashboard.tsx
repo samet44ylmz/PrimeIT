@@ -28,7 +28,7 @@ export const EmployerDashboard: React.FC = () => {
   const { data: applications, isLoading } = useQuery<Applicant[]>({
     queryKey: ['applications', userId],
     queryFn: async () => {
-      const response = await axios.get(`https://localhost:7054/api/applications/GetJobApplicationsWithDetails`, {
+      const response = await axios.get(`/api/applications/GetJobApplicationsWithDetails`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       return response.data;
@@ -40,7 +40,7 @@ export const EmployerDashboard: React.FC = () => {
     e.preventDefault();
     setStatus('Yükleniyor...');
     try {
-      await axios.post('https://localhost:7054/api/Jobs/create', {
+      await axios.post('/api/Jobs/create', {
         employerId: userId,
         ...formData,
         questions: questions

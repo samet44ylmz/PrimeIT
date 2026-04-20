@@ -14,8 +14,10 @@ using PrimeITServer.Infrastructure;
 using PrimeITServer.WebAPI.Middlewares;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
-using MongoDB.Bson;
 using Microsoft.EntityFrameworkCore;
+using Hangfire;
+using Hangfire.Redis.StackExchange;
+using RedisRateLimiting;
 
 // Register Guid Serializer for MongoDB
 BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
@@ -28,6 +30,15 @@ builder.Host.UseSerilog((context, configuration) =>
         .WriteTo.Console()
         .WriteTo.Seq(context.Configuration["Serilog:SeqServerUrl"] ?? "http://localhost:5341")
 );
+
+// Configure Hangfire with Redis
+builder.Services.AddHangfire(configuration => configuration
+    .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
+    .UseSimpleAssemblyNameTypeSerializer()
+    .UseRecommendedSerializerSettings()
+    .UseRedisStorage(builder.Configuration.GetConnectionString("Redis") ?? "localhost:6379"));
+
+builder.Services.AddHangfireServer();
 
 builder.Services.AddResponseCompression(options =>
 {
@@ -74,12 +85,12 @@ builder.Services.AddSwaggerGen(setup =>
 
 builder.Services.AddRateLimiter(options =>
 {
-    options.AddFixedWindowLimiter("fixed", options =>
+    options.AddRedisFixedWindowLimiter("fixed", options =>
     {
-        options.QueueLimit = 100;
-        options.PermitLimit = 100;
-        options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        options.ConnectionMultiplexerFactory = () => StackExchange.Redis.ConnectionMultiplexer.Connect(builder.Configuration.GetConnectionString("Redis") ?? "localhost:6379");
         options.Window = TimeSpan.FromSeconds(1);
+        options.PermitLimit = 100;
+        options.QueueLimit = 100;
     });
 });
 
@@ -94,7 +105,18 @@ if (app.Environment.IsDevelopment())
 if (!app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();
+    app.UseHsts();
 }
+
+// Security Headers
+app.Use(async (context, next) =>
+{
+    context.Response.Headers.Append("X-Frame-Options", "SAMEORIGIN");
+    context.Response.Headers.Append("X-XSS-Protection", "1; mode=block");
+    context.Response.Headers.Append("X-Content-Type-Options", "nosniff");
+    context.Response.Headers.Append("Referrer-Policy", "strict-origin-when-cross-origin");
+    await next();
+});
 
 app.UseResponseCompression();
 
@@ -109,6 +131,11 @@ app.UseAuthorization();
 app.UseRateLimiter();
 
 app.UseExceptionHandler();
+
+app.UseHangfireDashboard("/hangfire", new DashboardOptions
+{
+    Authorization = new[] { new Hangfire.Dashboard.LocalRequestsOnlyAuthorizationFilter() } // In prod, add real auth here
+});
 
 app.MapControllers().RequireRateLimiting("fixed").RequireAuthorization();
 

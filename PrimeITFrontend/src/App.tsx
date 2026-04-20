@@ -21,6 +21,7 @@ import { Profile } from './pages/Profile';
 import { ToastProvider } from './store/ToastContext';
 import { ToastContainer } from './components/ToastContainer';
 import { ConfirmProvider, useConfirm } from './store/ConfirmContext';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const queryClient = new QueryClient();
 
@@ -35,7 +36,7 @@ function AppContent() {
     const fetchUnread = async () => {
       if (!isAuthenticated || !token) return;
       try {
-        const response = await axios.get('https://localhost:7054/api/Notifications', {
+        const response = await axios.get('/api/Notifications', {
           headers: { Authorization: `Bearer ${token}` }
         });
         dispatch(setUnreadCount(response.data.data.filter((n: any) => !n.isRead).length));
@@ -152,10 +153,12 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ToastProvider>
         <ConfirmProvider>
-          <Router>
-            <ToastContainer />
-            <AppContent />
-          </Router>
+          <ErrorBoundary>
+            <Router>
+              <ToastContainer />
+              <AppContent />
+            </Router>
+          </ErrorBoundary>
         </ConfirmProvider>
       </ToastProvider>
     </QueryClientProvider>

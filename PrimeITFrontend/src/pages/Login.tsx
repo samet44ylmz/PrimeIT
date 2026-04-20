@@ -31,7 +31,7 @@ export const Login: React.FC = () => {
     setError('');
     setLoading(true);
     try {
-      const response = await axios.post('https://localhost:7054/api/Auth/Login', {
+      const response = await axios.post('/api/Auth/Login', {
         emailOrUserName,
         password,
       });

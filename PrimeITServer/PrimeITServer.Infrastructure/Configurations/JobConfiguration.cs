@@ -10,8 +10,10 @@ internal sealed class JobConfiguration : IEntityTypeConfiguration<Job>
     {
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Title).IsRequired().HasMaxLength(200);
+        builder.HasIndex(x => x.Title);
         builder.Property(x => x.Company).IsRequired().HasMaxLength(150);
         builder.Property(x => x.Location).HasMaxLength(150);
+        builder.HasIndex(x => x.Location);
         builder.Property(x => x.SalaryMin).HasColumnType("decimal(18,2)");
         builder.Property(x => x.SalaryMax).HasColumnType("decimal(18,2)");
     }

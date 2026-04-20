@@ -47,7 +47,7 @@ export const EmployerJobs: React.FC = () => {
   const { data: jobs, isLoading } = useQuery({
     queryKey: ['employer-jobs', userId],
     queryFn: async () => {
-      const { data } = await axios.get<Job[]>('https://localhost:7054/api/Jobs/get-employer-jobs', {
+      const { data } = await axios.get<Job[]>('/api/Jobs/get-employer-jobs', {
         params: { employerId: userId },
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -67,7 +67,7 @@ export const EmployerJobs: React.FC = () => {
     if (!ok) return;
 
     try {
-      await axios.delete('https://localhost:7054/api/Jobs/delete', {
+      await axios.delete('/api/Jobs/delete', {
         params: { jobId, employerId: userId },
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -80,7 +80,7 @@ export const EmployerJobs: React.FC = () => {
 
   const handleToggleStatus = async (jobId: string) => {
     try {
-      const response = await axios.post('https://localhost:7054/api/Jobs/toggle-status', {}, {
+      const response = await axios.post('/api/Jobs/toggle-status', {}, {
         params: { jobId, employerId: userId },
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -110,7 +110,7 @@ export const EmployerJobs: React.FC = () => {
     if (!editingJob) return;
 
     try {
-      await axios.put('https://localhost:7054/api/Jobs/update', {
+      await axios.put('/api/Jobs/update', {
         jobId: editingJob.id,
         employerId: userId,
         ...editForm,

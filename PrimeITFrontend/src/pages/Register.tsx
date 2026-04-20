@@ -18,7 +18,7 @@ export const Register: React.FC = () => {
     setSuccess('');
     setLoading(true);
     try {
-      const response = await axios.post('https://localhost:7054/api/Auth/Register', form);
+      const response = await axios.post('/api/Auth/Register', form);
       if (response.data.isSuccessful) {
         setSuccess('Kayıt başarılı! Yönlendiriliyorsunuz...');
         setTimeout(() => navigate('/login'), 1500);
