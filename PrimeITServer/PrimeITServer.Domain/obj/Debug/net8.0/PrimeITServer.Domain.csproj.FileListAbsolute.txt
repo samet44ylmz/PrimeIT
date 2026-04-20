@@ -1,0 +1,12 @@
+C:\PrimeIT\PrimeITServer\PrimeITServer.Domain\bin\Debug\net8.0\PrimeITServer.Domain.deps.json
+C:\PrimeIT\PrimeITServer\PrimeITServer.Domain\bin\Debug\net8.0\PrimeITServer.Domain.dll
+C:\PrimeIT\PrimeITServer\PrimeITServer.Domain\bin\Debug\net8.0\PrimeITServer.Domain.pdb
+C:\PrimeIT\PrimeITServer\PrimeITServer.Domain\obj\Debug\net8.0\PrimeITServer.Domain.csproj.AssemblyReference.cache
+C:\PrimeIT\PrimeITServer\PrimeITServer.Domain\obj\Debug\net8.0\PrimeITServer.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\PrimeIT\PrimeITServer\PrimeITServer.Domain\obj\Debug\net8.0\PrimeITServer.Domain.AssemblyInfoInputs.cache
+C:\PrimeIT\PrimeITServer\PrimeITServer.Domain\obj\Debug\net8.0\PrimeITServer.Domain.AssemblyInfo.cs
+C:\PrimeIT\PrimeITServer\PrimeITServer.Domain\obj\Debug\net8.0\PrimeITServer.Domain.csproj.CoreCompileInputs.cache
+C:\PrimeIT\PrimeITServer\PrimeITServer.Domain\obj\Debug\net8.0\PrimeITServer.Domain.dll
+C:\PrimeIT\PrimeITServer\PrimeITServer.Domain\obj\Debug\net8.0\refint\PrimeITServer.Domain.dll
+C:\PrimeIT\PrimeITServer\PrimeITServer.Domain\obj\Debug\net8.0\PrimeITServer.Domain.pdb
+C:\PrimeIT\PrimeITServer\PrimeITServer.Domain\obj\Debug\net8.0\ref\PrimeITServer.Domain.dll

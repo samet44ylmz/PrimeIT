@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="PrimeITServer.Application/PrimeITServer.Application.csproj" />
+  <Project Path="PrimeITServer.Domain/PrimeITServer.Domain.csproj" />
+  <Project Path="PrimeITServer.Infrastructure/PrimeITServer.Infrastructure.csproj" />
+  <Project Path="PrimeITServer.WebAPI/PrimeITServer.WebAPI.csproj" />
+</Solution>

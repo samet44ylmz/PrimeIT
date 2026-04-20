@@ -1,0 +1,15 @@
+C:\PrimeIT\PrimeITServer\PrimeITServer.Application\bin\Debug\net8.0\PrimeITServer.Application.deps.json
+C:\PrimeIT\PrimeITServer\PrimeITServer.Application\bin\Debug\net8.0\PrimeITServer.Application.dll
+C:\PrimeIT\PrimeITServer\PrimeITServer.Application\bin\Debug\net8.0\PrimeITServer.Application.pdb
+C:\PrimeIT\PrimeITServer\PrimeITServer.Application\bin\Debug\net8.0\PrimeITServer.Domain.dll
+C:\PrimeIT\PrimeITServer\PrimeITServer.Application\bin\Debug\net8.0\PrimeITServer.Domain.pdb
+C:\PrimeIT\PrimeITServer\PrimeITServer.Application\obj\Debug\net8.0\PrimeITServer.Application.csproj.AssemblyReference.cache
+C:\PrimeIT\PrimeITServer\PrimeITServer.Application\obj\Debug\net8.0\PrimeITServer.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\PrimeIT\PrimeITServer\PrimeITServer.Application\obj\Debug\net8.0\PrimeITServer.Application.AssemblyInfoInputs.cache
+C:\PrimeIT\PrimeITServer\PrimeITServer.Application\obj\Debug\net8.0\PrimeITServer.Application.AssemblyInfo.cs
+C:\PrimeIT\PrimeITServer\PrimeITServer.Application\obj\Debug\net8.0\PrimeITServer.Application.csproj.CoreCompileInputs.cache
+C:\PrimeIT\PrimeITServer\PrimeITServer.Application\obj\Debug\net8.0\PrimeITS.B83B9D4E.Up2Date
+C:\PrimeIT\PrimeITServer\PrimeITServer.Application\obj\Debug\net8.0\PrimeITServer.Application.dll
+C:\PrimeIT\PrimeITServer\PrimeITServer.Application\obj\Debug\net8.0\refint\PrimeITServer.Application.dll
+C:\PrimeIT\PrimeITServer\PrimeITServer.Application\obj\Debug\net8.0\PrimeITServer.Application.pdb
+C:\PrimeIT\PrimeITServer\PrimeITServer.Application\obj\Debug\net8.0\ref\PrimeITServer.Application.dll
