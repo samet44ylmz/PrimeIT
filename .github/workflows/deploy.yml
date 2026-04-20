@@ -41,10 +41,10 @@ jobs:
 
           # Refresh the environment
           echo "Eski konteynerlar durduruluyor..."
-          docker-compose -f docker-compose.yml down --remove-orphans || true
+          docker compose -f docker-compose.yml down --remove-orphans || true
           
           echo "Build ve deploy ediliyor..."
-          docker-compose -f docker-compose.yml up -d --build --force-recreate --remove-orphans
+          docker compose -f docker-compose.yml up -d --build --remove-orphans
       env:
         MONGO_CONNECTION_STRING: ${{ secrets.MONGO_CONNECTION_STRING }}
         POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
