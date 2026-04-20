@@ -1,4 +1,5 @@
 using System.Threading.RateLimiting;
+using System.Linq;
 using Serilog;
 using DefaultCorsPolicyNugetPackage;
 using HealthChecks.UI.Client;
@@ -117,7 +118,7 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<PrimeITServer.Infrastructure.Context.ApplicationDbContext>();
-        if (Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.Any(context.Database.GetPendingMigrations()))
+        if (context.Database.GetPendingMigrations().Any())
         {
             context.Database.Migrate();
         }
