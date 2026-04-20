@@ -166,8 +166,6 @@ export const EmployerApplications: React.FC = () => {
     }
   };
 
-
-
   return (
     <div className="w-full fade-in">
       <section className="bg-[#030305] border-b border-white/5 py-12 px-6">
@@ -342,56 +340,6 @@ export const EmployerApplications: React.FC = () => {
                                     <div className="w-4 h-4 border-2 border-red-500/20 border-t-red-500 animate-spin"></div>
                                  ) : (
                                     <><XCircle className="w-3.5 h-3.5 md:w-4 md:h-4" /> ADAYI REDDET</>
-                                 )}
-                              </button>
-                           </div>
-                        </div>
-                      </div>
-                   )}
-                </div>
-              </div>
-            ))}
-          </div>
-
-                   {viewingResumeId === app.applicationId && (
-                      <div className="border border-white/5 rounded-xl mt-4 p-4 bg-white/[0.01]">
-                         <ResumeSection userId={app.userId} token={token || ''} />
-                      </div>
-                   )}
-
-                   {messagingId === app.applicationId && (
-                      <div className="border border-white/5 rounded-xl mt-4 p-6 bg-white/[0.01]">
-                        <div className="space-y-6">
-                           <div className="space-y-3">
-                              <label className="m-label text-indigo-400">MÜLAKAT / DURUM MESAJI</label>
-                              <textarea 
-                                  value={messageText}
-                                  onChange={(e) => setMessageText(e.target.value)}
-                                  placeholder="Adaya iletilecek detayları buraya yazınız..."
-                                  className="m-input min-h-[120px] resize-none"
-                              />
-                           </div>
-                           <div className="flex gap-4">
-                              <button 
-                                 onClick={() => handleUpdateStatus(app.applicationId, 'Accepted', messageText)}
-                                 disabled={updatingId === app.applicationId + 'Accepted'}
-                                 className="flex-1 m-btn-primary !text-[10px] !px-4 flex items-center justify-center gap-2.5 h-12"
-                              >
-                                 {updatingId === app.applicationId + 'Accepted' ? (
-                                    <div className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin"></div>
-                                 ) : (
-                                    <><Check className="w-4 h-4" /> KABUL ET / DAVET ET</>
-                                 )}
-                              </button>
-                              <button 
-                                 onClick={() => handleUpdateStatus(app.applicationId, 'Rejected')}
-                                 disabled={updatingId === app.applicationId + 'Rejected'}
-                                 className="flex-1 m-btn-secondary !text-red-400 !border-red-500/20 hover:!bg-red-500/10 !text-[10px] !px-4 flex items-center justify-center gap-2.5 h-12"
-                              >
-                                  {updatingId === app.applicationId + 'Rejected' ? (
-                                    <div className="w-4 h-4 border-2 border-red-500/20 border-t-red-500 animate-spin"></div>
-                                 ) : (
-                                    <><XCircle className="w-4 h-4" /> REDDET</>
                                  )}
                               </button>
                            </div>
