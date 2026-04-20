@@ -90,14 +90,15 @@ builder.Services.AddRateLimiter(options =>
     
     options.AddPolicy("fixed", context =>
     {
+        var partitionKey = context.User.Identity?.Name ?? context.Connection.RemoteIpAddress?.ToString() ?? "anonymous";
+        
         return RateLimitPartition.Get(
-            partitionKey: context.User.Identity?.Name ?? context.Connection.RemoteIpAddress?.ToString() ?? "anonymous",
-            factory: _ => new RedisRateLimiting.RedisFixedWindowRateLimiter(connectionMultiplexer, new RedisRateLimiting.RedisFixedWindowRateLimiterOptions
+            partitionKey: partitionKey,
+            factory: _ => new RedisRateLimiting.RedisFixedWindowRateLimiter<string>(partitionKey, new RedisRateLimiting.RedisFixedWindowRateLimiterOptions
             {
                 PermitLimit = 100,
-                Window = TimeSpan.FromSeconds(1),
-                BaseKey = "rate-limit:fixed"
-            })
+                Window = TimeSpan.FromSeconds(1)
+            }, connectionMultiplexer)
         );
     });
 });
